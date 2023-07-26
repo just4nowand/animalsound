@@ -17,8 +17,7 @@ const port = 3000
 app.use(cors())
 
 app.get('/', function (req, res) {
-  res.send("This page is for nodejs used for deploying the web server!!<br>
-           you should use /user/dog at the end of this address")
+  res.send("This page is for nodejs used for deploying the web server!!<br>you should use /user/dog at the end of this address!!")
 })
 
 app.get('/dog', function (req, res) {
