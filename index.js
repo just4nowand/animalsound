@@ -4,15 +4,15 @@ var cors = require('cors')
 const app = express()
 const port = 3000
 
-var express = require('express');
-var router = express.Router();
+// var express = require('express');
+// var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index.html');
-});
+// router.get('/', function(req, res, next) {
+//   res.render('index.html');
+// });
 
-module.exports = router;
+// module.exports = router;
 
 app.use(cors())
 
