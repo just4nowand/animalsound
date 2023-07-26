@@ -1,32 +1,47 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cloudtype - Node.js</title>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.3/dist/full.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
-    <link rel="icon" href="/images/favicon.ico">
+  <meta charset="UTF-8">
+  <title>돈까스는 맛있죠</title>
 </head>
 <body>
-    <div class="hero min-h-screen bg-base-200">
-        <div class="hero-content flex-col lg:flex-row-reverse">
-          <img src="/images/node.png" class="w-36 rounded-lg md:ml-5 lg:ml-5" />
-          <div>
-            <h1 class="text-5xl font-bold">Node.js</h1>
-            <p class="py-6">클라우드타입에서 배포한 Node.js 어플리케이션입니다.</p>
-            <button type="button" onclick="window.open('https://github.com/cloudtype-examples/node-express')" class="btn btn-outline rounded">
-              GitHub
-            </button>
-            <button type="button" onclick="window.open('https://docs.cloudtype.io/')" class="btn btn-outline rounded">
-              Docs
-            </button>
-            <button type="button" onclick="window.open('https://discord.gg/U7HX4BA6hu')" class="btn btn-outline rounded">
-              Discord
-            </button>            
-          </div>
-        </div>
-      </div>
+<H4><pre><span style="font-family:Courier">      _ ____    _      ____
+     | / ___|  / \    / ___|  ___ _ ____   _____ _ __
+  _  | \___ \ / _ \   \___ \ / _ \ '__\ \ / / _ \ '__|
+ | |_| |___) / ___ \   ___) |  __/ |   \ V /  __/ |
+  \___/|____/_/   \_\ |____/ \___|_|    \_/ \___|_|
+</span></pre></H4>
+<a href="./folder/sub.html">작동이 안되죠?</a>
+  <font size="6">동물울음소리API</font> <input value="dog", id="name", type="text" onkeyup="enterkey()">
+  <button onclick="getSound()">API 요청</button>
+  <br>dog, cat, pig를 사용가능합니다.
+  <h2 id="sound">동물소리출력</h2>
+  <img id="img" width=20% height=20% src="https://papago.naver.com/97ec80a681e94540414daf2fb855ba3b.svg"> 
+  <br>
+  <script>
+
+    function enterkey() {
+      if (window.event.keyCode == 13) {
+          // 엔터키가 눌렸을 때
+          getSound()
+        }
+    }    
+
+    function getSound() {
+      const name = document.getElementById('name').value
+      /// fetch()함수로 원격 API를 호출하는 것이다.
+	  /// main.html에서 name의 값을 가져온다.
+	  /// 서버로 만든 웹페이지에서 sound와 img 데이터를 가져와서
+	  /// 현재 main.html 페이지를 수정하는 것이다.
+      fetch(`http://localhost:3000/user/${name}`) //자바스크립트 변수 보낼 때는 `와 ${___}를 사용
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.sound)
+        document.getElementById('sound').innerHTML = data.sound
+        document.getElementById('img').src = data.img
+      });
+    }
+  </script>
+
 </body>
 </html>
